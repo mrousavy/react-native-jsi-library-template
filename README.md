@@ -1,29 +1,10 @@
-# ⚡️ react-native-fast-crypto
+# react-native-jsi-library-template
 
-A fast implementation of Node's `crypto` module written in C/C++ JSI.
+A template for creating JSI libraries for React Native with my style and setup.
 
-FastCrypto can be used as a drop-in replacement for your Web3/Crypto apps to speed up all cryptography functions.
+My libraries always have cool GitHub actions for linting and building, strong ESLint and TypeScript setup, an example app, up-to-date dependencies, and a lazy and stable install function to initialize the JSI Module.
 
-For example, creating a Wallet using ethers.js uses complex algorithms to generate a private-key/mnemonic-phrase pair:
-
-```ts
-const start = performance.now()
-const wallet = ethers.Wallet.createRandom()
-const end = performance.now()
-console.log(`Creating a Wallet took ${end - start}ms.`)
-```
-
-**Without** react-native-crypto 🐢:
-
-```
-Creating a Wallet took 31.3582738422ms
-```
-
-**With** react-native-crypto ⚡️:
-
-```
-Creating a Wallet took 2.47425001859ms
-```
+The JSI Module can do anything with the `jsi::Runtime`, whether it's a single function (see react-native-mmkv) or an entire HostObject (see react-native-fast-crypto or my talk about HostObjects).
 
 ---
 
@@ -32,40 +13,24 @@ Creating a Wallet took 2.47425001859ms
 ### React Native
 
 ```sh
-yarn add react-native-fast-crypto
+yarn add react-native-...
 cd ios && pod install
 ```
 
 ### Expo
 
 ```sh
-expo install react-native-fast-crypto
+expo install react-native-...
 expo prebuild
 ```
 
 ## Usage
 
-In your `metro.config.js`, add a module resolver to replace `crypto` with `react-native-fast-crypto`:
-
-```diff
-+const path = require('path');
-
- module.exports = {
-+  resolver: {
-+    extraNodeModules: {
-+      crypto: path.resolve(__dirname, './node_modules/react-native-fast-crypto'),
-+    },
-+  },
-   ...
-```
-
-Now, all imports for `crypto` will be resolved as `react-native-fast-crypto` instead.
-
----
+TODO: Add usage example
 
 ## Sponsors
 
-- TODO: List sponsors here
+TODO: List sponsors here
 
 ## Limitations
 
@@ -73,7 +38,7 @@ As the library uses JSI for synchronous native methods access, remote debugging 
 
 ## Adopting at scale
 
-react-native-fast-crypto was built at Margelo, an elite app development agency. For enterprise support or other business inquiries, contact us at <a href="mailto:hello@margelo.io?subject=Adopting react-native-fast-crypto at scale">hello@margelo.io</a>!
+react-native-jsi-library-template was built by me in my free time. For enterprise support or other business inquiries, contact us at <a href="mailto:hello@margelo.io?subject=Hello!">hello@margelo.io</a>!
 
 ## Contributing
 
